@@ -39,7 +39,7 @@ const ProductsPage = () => {
               </b>
               <Button
                 variant="primary"
-                style={{ marginTop: "5px" }}
+                style={{ marginTop: "5px", backgroundColor: "#198754" }}
                 onClick={(e: React.MouseEvent<HTMLElement>) => {
                   e.stopPropagation();
                   addToCart(item);

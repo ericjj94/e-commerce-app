@@ -9,32 +9,22 @@ interface InitialStateInterface {
   items: ProductObject[];
 }
 
-interface CartInterface {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  category: string;
-  image: string;
-  rating: {
-    rate: 3.9;
-    count: 120;
-  };
-}
 export const cartReducer = createSlice({
   name: "cartReducer",
   initialState,
   reducers: {
-    addItemsToCart: (state: any, action: PayloadAction<CartInterface>) => {
+    addItemsToCart: (state: any, action: PayloadAction<ProductObject>) => {
       return {
         ...state,
         items: [...state.items, action.payload],
       };
     },
-    removeItemsFromCart: (state: InitialStateInterface, action: any) => {
+    removeItemsFromCart: (state: any, action: PayloadAction<number>) => {
+      console.log("action.payload", action.payload);
+      const updatedCartItems = state.items.filter((item: ProductObject) => item.id !== action.payload);
       return {
         ...state,
-        items: action.payload,
+        items: updatedCartItems,
       };
     },
   },
