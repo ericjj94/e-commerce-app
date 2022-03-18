@@ -14,3 +14,8 @@ code {
   font-size: 50px;
   color: #ffcd3c;
 }
+@media (min-width: 1291px) {
+  .search-input {
+    width: 800px !important;
+  }
+}
