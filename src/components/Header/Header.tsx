@@ -1,4 +1,13 @@
+import { useSelector } from "react-redux";
+import { RootState } from "../../state";
+import { useNavigate } from "react-router-dom";
+
 const Header = () => {
+  const cartItems = useSelector((state: RootState) => state.cart.items);
+  const navigate = useNavigate();
+  const handleRedirect = () => {
+    navigate("/cart");
+  };
   return (
     <nav className="navbar navbar-light bg-light">
       <div className="container-fluid">
@@ -12,8 +21,8 @@ const Header = () => {
           </button>
         </form>
         <div className="d-flex">
-          <button className="btn btn-outline-success" type="submit">
-            Add to Cart
+          <button className="btn btn-outline-success" type="submit" onClick={handleRedirect}>
+            View Cart
           </button>
         </div>
       </div>

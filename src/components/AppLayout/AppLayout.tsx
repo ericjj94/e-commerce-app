@@ -8,7 +8,7 @@ const AppLayout = ({ children }: AppLayoutInterface) => {
   return (
     <div>
       <Header />
-      {children}
+      <div className="mt-4">{children}</div>
     </div>
   );
 };

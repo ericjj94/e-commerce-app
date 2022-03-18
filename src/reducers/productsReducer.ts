@@ -23,7 +23,7 @@ export const getProducts = () => {
   return async (dispatch: Dispatch) => {
     try {
       const result = await FetchService("/products", "GET");
-      console.log("result", result);
+      dispatch(setProducts(result));
     } catch (e) {
       console.log("Error fetching products", e);
     }

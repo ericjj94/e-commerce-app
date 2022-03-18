@@ -3,7 +3,6 @@ import { apiUrl } from "../apiConfig";
 const FetchService = async (endpoint: string, method: string, body?: any) => {
   try {
     const url = `${apiUrl}${endpoint}`;
-    console.log("url", url);
     const response = await fetch(url, {
       method: method ? method : body ? "POST" : "GET",
       body: JSON.stringify(body),
