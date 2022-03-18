@@ -17,6 +17,7 @@ export type ProductObject = {
 
 export interface ProductsInterface {
   productsList: ProductObject[];
+  productDetails: ProductObject;
 }
 
 export interface CartInterface {

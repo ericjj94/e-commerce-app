@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AppLayout from "./components/AppLayout";
 import ProductDetails from "./pages/ProductsDetails";
 import ProductsPage from "./pages/ProductsPage";
+import Order from "./pages/Order";
 import ViewCart from "./pages/ViewCart";
 
 const AppRouter = () => {
@@ -30,6 +31,14 @@ const AppRouter = () => {
           element={
             <AppLayout>
               <ProductDetails />
+            </AppLayout>
+          }
+        />
+        <Route
+          path="/order"
+          element={
+            <AppLayout>
+              <Order />
             </AppLayout>
           }
         />

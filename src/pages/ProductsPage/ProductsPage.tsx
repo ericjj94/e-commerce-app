@@ -10,6 +10,8 @@ import { CardItem } from "./styled";
 const ProductsPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const cartItems = useSelector((state: RootState) => state.cart.items);
+
   const productsList = useSelector((state: RootState) => state.products.productsList);
   useEffect(() => {
     dispatch(getProducts());
@@ -25,7 +27,12 @@ const ProductsPage = () => {
   const renderProducts = () => {
     return productsList.map((item, index) => (
       <Col key={index} xs={12} md={4} lg={3} style={{ margin: "5px 0" }}>
-        <Card className="card-item">
+        <Card
+          className={[
+            "card-item",
+            !!cartItems.find((selectedItem: ProductObject) => selectedItem.id === item.id) ? "is-in-cart" : "",
+          ].join(" ")}
+        >
           <CardItem
             onClick={() => {
               handleRedirect(item.id);
@@ -61,6 +68,6 @@ const ProductsPage = () => {
       </Container>
     );
   }
-  return <div>ProductsPage</div>;
+  return <div>Looks like there are no products available!</div>;
 };
 export default ProductsPage;
