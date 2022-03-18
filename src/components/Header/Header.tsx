@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../../state";
 import { useNavigate } from "react-router-dom";
+import { ItemsSpan } from "./styled";
 
 const Header = () => {
   const cartItems = useSelector((state: RootState) => state.cart.items);
@@ -21,8 +22,9 @@ const Header = () => {
           </button>
         </form>
         <div className="d-flex">
-          <button className="btn btn-outline-success" type="submit" onClick={handleRedirect}>
-            View Cart
+          <button className="btn btn-outline-success d-flex" type="submit" onClick={handleRedirect}>
+            <span>View Cart</span>
+            {cartItems.length ? <ItemsSpan>{cartItems.length}</ItemsSpan> : null}
           </button>
         </div>
       </div>

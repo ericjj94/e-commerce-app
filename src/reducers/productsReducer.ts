@@ -1,5 +1,6 @@
 import { createSlice, Dispatch } from "@reduxjs/toolkit";
 import FetchService from "../services/FetchService";
+import { ActionType } from "../state";
 
 const initialState = {
   productsList: [],
@@ -9,7 +10,7 @@ export const productsReducer = createSlice({
   name: "productsReducer",
   initialState,
   reducers: {
-    setProducts: (state, action) => {
+    setProducts: (state, action: ActionType) => {
       return {
         ...state,
         productsList: action.payload,

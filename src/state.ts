@@ -1,5 +1,5 @@
 export type ActionType = {
-  payload: [] | {} | string | Number;
+  payload: any;
 };
 
 export type ProductObject = {

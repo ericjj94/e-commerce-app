@@ -1,4 +1,4 @@
-import { createSlice, Dispatch } from "@reduxjs/toolkit";
+import { createSlice, Dispatch, PayloadAction } from "@reduxjs/toolkit";
 import { ActionType, ProductObject } from "../state";
 
 const initialState = {
@@ -9,18 +9,29 @@ interface InitialStateInterface {
   items: ProductObject[];
 }
 
+interface CartInterface {
+  id: number;
+  title: string;
+  price: number;
+  description: string;
+  category: string;
+  image: string;
+  rating: {
+    rate: 3.9;
+    count: 120;
+  };
+}
 export const cartReducer = createSlice({
   name: "cartReducer",
   initialState,
   reducers: {
-    addItemsToCart: (state: InitialStateInterface, action: any) => {
+    addItemsToCart: (state: any, action: PayloadAction<CartInterface>) => {
       return {
         ...state,
-        items: action.payload,
+        items: [...state.items, action.payload],
       };
     },
     removeItemsFromCart: (state: InitialStateInterface, action: any) => {
-      //   const remainingItems = state.items.filter((item) => item.id !== action.id);
       return {
         ...state,
         items: action.payload,
@@ -28,7 +39,7 @@ export const cartReducer = createSlice({
     },
   },
 });
-export const { addItemsToCart } = cartReducer.actions;
+export const { addItemsToCart, removeItemsFromCart } = cartReducer.actions;
 
 // export const getProducts = () => {
 //   return async (dispatch: Dispatch) => {
