@@ -1,0 +1,20 @@
+{
+  "name": "myos-test-task",
+  "version": "1.0.0",
+  "description": "Test task of an ecommerce shop",
+  "main": "index.js",
+  "scripts": {
+    "server:dev": "nodemon server/index.js",
+    "server": "node server/index"
+  },
+  "author": "Eric Jose",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.2",
+    "cors": "^2.8.5",
+    "express": "^4.17.3"
+  }
+}
