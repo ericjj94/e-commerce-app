@@ -1,5 +1,5 @@
 import { Container, Row, Button } from "react-bootstrap";
-import { ProductObject, RootState } from "../../state";
+import { CartObject, RootState } from "../../state";
 import { useDispatch, useSelector } from "react-redux";
 import { SmallButton, HeadingText } from "../../styled";
 import "./style.css";
@@ -16,12 +16,12 @@ const ViewCart = () => {
   const cartItems = useSelector((state: RootState) => state.cart.items);
   const dispatch = useDispatch();
 
-  const handleRemove = (selectedItem: ProductObject) => {
+  const handleRemove = (selectedItem: CartObject) => {
     dispatch(removeItemsFromCart(selectedItem.id));
   };
 
   const renderCartItems = () => {
-    return cartItems.map((item: ProductObject, index: number) => (
+    return cartItems.map((item: CartObject, index: number) => (
       <>
         <Row key={index} className="cart-items mt-1">
           <div className="col-md-2">
@@ -34,6 +34,9 @@ const ViewCart = () => {
             <p>{item.description}</p>
             <p>
               <b>{item.price}</b>
+            </p>
+            <p>
+              <b>No of items: {item.quantity}</b>
             </p>
             <p>
               <Button
@@ -55,7 +58,7 @@ const ViewCart = () => {
     return <>{renderCartItems()}</>;
   };
   const calculatePrice = () => {
-    const price = cartItems.reduce((acc, item: ProductObject) => (acc += item.price), 0);
+    const price = cartItems.reduce((acc, item: CartObject) => (acc += item.price * item.quantity), 0);
     return Math.floor(price);
   };
   const renderPrice = () => {

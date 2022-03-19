@@ -1,26 +1,34 @@
 import { createSlice, Dispatch, PayloadAction } from "@reduxjs/toolkit";
-import { ActionType, ProductObject } from "../state";
+import { ProductObject, CartObject } from "../state";
 
 const initialState = {
   items: [],
 };
-
-interface InitialStateInterface {
-  items: ProductObject[];
-}
 
 export const cartReducer = createSlice({
   name: "cartReducer",
   initialState,
   reducers: {
     addItemsToCart: (state: any, action: PayloadAction<ProductObject>) => {
+      let updatedCart = [];
+      const product: CartObject = state.items?.find((item: CartObject) => item.id === action.payload.id);
+      if (product && Object.keys(product).length) {
+        updatedCart.push({
+          ...action.payload,
+          quantity: product?.quantity + 1,
+        });
+      } else {
+        updatedCart.push({
+          ...action.payload,
+          quantity: 1,
+        });
+      }
       return {
         ...state,
-        items: [...state.items, action.payload],
+        items: updatedCart,
       };
     },
     removeItemsFromCart: (state: any, action: PayloadAction<number>) => {
-      console.log("action.payload", action.payload);
       const updatedCartItems = state.items.filter((item: ProductObject) => item.id !== action.payload);
       return {
         ...state,
@@ -30,16 +38,5 @@ export const cartReducer = createSlice({
   },
 });
 export const { addItemsToCart, removeItemsFromCart } = cartReducer.actions;
-
-// export const getProducts = () => {
-//   return async (dispatch: Dispatch) => {
-//     try {
-//       const result = await FetchService("/products", "GET");
-//       dispatch(setProducts(result));
-//     } catch (e) {
-//       console.log("Error fetching products", e);
-//     }
-//   };
-// };
 
 export default cartReducer.reducer;
