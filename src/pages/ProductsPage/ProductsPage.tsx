@@ -53,13 +53,13 @@ const ProductsPage = () => {
                 </b>
                 <Button
                   variant="primary"
-                  style={{ marginTop: "5px", backgroundColor: "#198754" }}
+                  style={{ marginTop: "5px", backgroundColor: isItemInCart ? "#0C6EFD" : "#198754" }}
                   onClick={(e: React.MouseEvent<HTMLElement>) => {
                     e.stopPropagation();
                     addToCart(item);
                   }}
                 >
-                  {isItemInCart ? "Item added" : "Add to cart"}
+                  Add to cart
                 </Button>
               </Card.Body>
             </CardItem>

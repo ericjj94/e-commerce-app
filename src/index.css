@@ -10,6 +10,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
+.main-content-wrapper {
+  margin-top: 100px;
+}
+
 .star {
   font-size: 50px;
   color: #ffcd3c;

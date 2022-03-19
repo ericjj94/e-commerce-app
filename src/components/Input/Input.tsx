@@ -30,7 +30,7 @@ const Input = () => {
       className="form-control me-2 search-input"
       type="search"
       value={searchText}
-      placeholder="Search"
+      placeholder="Search for a product"
       aria-label="Search"
       onChange={handleChange}
     />

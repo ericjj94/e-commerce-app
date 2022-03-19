@@ -23,17 +23,13 @@ const Header = () => {
   }, [cartItems]);
 
   return (
-    <nav className="navbar navbar-light bg-light navbar-fixed-top">
+    <nav className="navbar navbar-light bg-light fixed-top">
       <div className="container-fluid">
         <a className="navbar-brand" href="/">
           E-commerce app
         </a>
         <form className="d-flex">
           <Input />
-          <button className="btn btn-outline-success" type="submit">
-            Search {` `}
-            <FontAwesomeIcon icon={faMagnifyingGlass} />
-          </button>
         </form>
         <div className="d-flex">
           <button
