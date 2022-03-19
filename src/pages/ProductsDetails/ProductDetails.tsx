@@ -41,7 +41,7 @@ const ProductDetails = () => {
 
         <Row>
           <p className="pl-2 mt-3">
-            This product was brought by {details.rating?.count} users and the average rating is{" "}
+            This product was brought by {details.rating?.count} users and has an average rating of{" "}
             <b>{details.rating?.rate}</b>
           </p>
         </Row>

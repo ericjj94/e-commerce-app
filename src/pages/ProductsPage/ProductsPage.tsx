@@ -23,42 +23,50 @@ const ProductsPage = () => {
   const addToCart = (item: ProductObject) => {
     dispatch(addItemsToCart(item));
   };
+  const checkIfItemPresentInCart = (selectedItem: ProductObject) => {
+    return !!cartItems.find((item: ProductObject) => item.id === selectedItem.id);
+  };
 
   const renderProducts = () => {
-    return productsList.map((item, index) => (
-      <Col key={index} xs={12} md={4} lg={3} style={{ margin: "5px 0" }}>
-        <Card
-          className={[
-            "card-item",
-            !!cartItems.find((selectedItem: ProductObject) => selectedItem.id === item.id) ? "is-in-cart" : "",
-          ].join(" ")}
-        >
-          <CardItem
-            onClick={() => {
-              handleRedirect(item.id);
-            }}
+    return productsList.map((item, index) => {
+      const isItemInCart = checkIfItemPresentInCart(item);
+
+      return (
+        <Col key={index} xs={12} md={4} lg={3} style={{ margin: "5px 0" }}>
+          <Card
+            className={[
+              "card-item",
+              !!cartItems.find((selectedItem: ProductObject) => selectedItem.id === item.id) ? "is-in-cart" : "",
+            ].join(" ")}
           >
-            <Card.Body>
-              <Card.Img variant="top" src={item.image} height={"300px"} />
-              <Card.Title>{item.title}</Card.Title>
-              <b>
-                <Card.Text>Price: € {item.price}</Card.Text>
-              </b>
-              <Button
-                variant="primary"
-                style={{ marginTop: "5px", backgroundColor: "#198754" }}
-                onClick={(e: React.MouseEvent<HTMLElement>) => {
-                  e.stopPropagation();
-                  addToCart(item);
-                }}
-              >
-                Add to cart
-              </Button>
-            </Card.Body>
-          </CardItem>
-        </Card>
-      </Col>
-    ));
+            <CardItem
+              onClick={() => {
+                handleRedirect(item.id);
+              }}
+            >
+              <Card.Body>
+                <Card.Img variant="top" src={item.image} height={"300px"} />
+                <Card.Title>{item.title}</Card.Title>
+                <Card.Text>Description {item.description.slice(0, 150)}...</Card.Text>
+                <b>
+                  <Card.Text>Price: € {item.price}</Card.Text>
+                </b>
+                <Button
+                  variant="primary"
+                  style={{ marginTop: "5px", backgroundColor: "#198754" }}
+                  onClick={(e: React.MouseEvent<HTMLElement>) => {
+                    e.stopPropagation();
+                    addToCart(item);
+                  }}
+                >
+                  {isItemInCart ? "Item added" : "Add to cart"}
+                </Button>
+              </Card.Body>
+            </CardItem>
+          </Card>
+        </Col>
+      );
+    });
   };
 
   if (productsList && productsList.length) {
@@ -68,6 +76,6 @@ const ProductsPage = () => {
       </Container>
     );
   }
-  return <div>Looks like there are no products available!</div>;
+  return null;
 };
 export default ProductsPage;

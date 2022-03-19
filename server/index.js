@@ -25,6 +25,12 @@ app.get("/product_details", (req, res) => {
   res.send(productService.getProductDetails(id));
 });
 
+app.get("/search_products", (req, res) => {
+  const searchText = req.query.searchText;
+  const result = productService.searchForProducts(searchText);
+  res.send(result);
+});
+
 app.listen(port, () => {
   console.log(`Server is running on ${port}!`);
 });

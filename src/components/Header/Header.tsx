@@ -5,6 +5,7 @@ import { ItemsSpan } from "./styled";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartArrowDown, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import Input from "../Input";
 
 const Header = () => {
   const cartItems = useSelector((state: RootState) => state.cart.items);
@@ -20,6 +21,7 @@ const Header = () => {
       setAnimationState(false);
     }, 1000);
   }, [cartItems]);
+
   return (
     <nav className="navbar navbar-light bg-light navbar-fixed-top">
       <div className="container-fluid">
@@ -27,7 +29,7 @@ const Header = () => {
           E-commerce app
         </a>
         <form className="d-flex">
-          <input className="form-control me-2 search-input" type="search" placeholder="Search" aria-label="Search" />
+          <Input />
           <button className="btn btn-outline-success" type="submit">
             Search {` `}
             <FontAwesomeIcon icon={faMagnifyingGlass} />

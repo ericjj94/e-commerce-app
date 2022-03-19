@@ -49,4 +49,15 @@ export const getProductDetails = (id: number) => {
   };
 };
 
+export const searchProducts = (searchText: string) => {
+  return async (dispatch: Dispatch) => {
+    try {
+      const result = await FetchService(`/search_products?searchText=${searchText}`, "GET");
+      dispatch(setProducts(result));
+    } catch (e) {
+      console.log("Error searching for products", e);
+    }
+  };
+};
+
 export default productsReducer.reducer;
