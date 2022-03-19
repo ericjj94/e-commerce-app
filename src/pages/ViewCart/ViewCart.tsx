@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { SmallButton, HeadingText } from "../../styled";
 import "./style.css";
 import { useNavigate } from "react-router-dom";
-import { removeItemsFromCart } from "../../reducers/cartReducer";
+import { addItemsToCart, clearCart, removeItemsFromCart } from "../../reducers/cartReducer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBasketShopping } from "@fortawesome/free-solid-svg-icons";
+import { faBasketShopping, faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 // should be added from backend or calculated on product
 let discount = 0;
@@ -14,16 +14,21 @@ let discount = 0;
 const ViewCart = () => {
   const navigate = useNavigate();
   const cartItems = useSelector((state: RootState) => state.cart.items);
+  console.log("cartItems in ViewCart", cartItems);
   const dispatch = useDispatch();
 
   const handleRemove = (selectedItem: CartObject) => {
     dispatch(removeItemsFromCart(selectedItem.id));
   };
 
+  const addSelectedItemToCart = (selectedItem: CartObject) => {
+    dispatch(addItemsToCart(selectedItem));
+  };
+
   const renderCartItems = () => {
-    return cartItems.map((item: CartObject, index: number) => (
+    return cartItems.map((item: CartObject) => (
       <>
-        <Row key={index} className="cart-items mt-1">
+        <Row key={`${item.id}-${item.quantity}`} className="cart-items mt-1">
           <div className="col-md-2">
             <img src={item.image} alt="cart-item" height={"100%"} width={"100%"} />
           </div>
@@ -33,11 +38,23 @@ const ViewCart = () => {
             </p>
             <p>{item.description}</p>
             <p>
-              <b>{item.price}</b>
+              <b>
+                No of items:
+                <FontAwesomeIcon icon={faMinus} className="quantity-icon" />
+                {item.quantity}
+              </b>
+              <FontAwesomeIcon
+                icon={faPlus}
+                className="quantity-icon"
+                onClick={() => {
+                  addSelectedItemToCart(item);
+                }}
+              />
             </p>
             <p>
-              <b>No of items: {item.quantity}</b>
+              <b>Total Price: € {item.price * item.quantity}</b>
             </p>
+
             <p>
               <Button
                 variant="danger"
@@ -106,10 +123,18 @@ const ViewCart = () => {
       </Row>
     );
   }
+  const clearAll = () => {
+    dispatch(clearCart());
+  };
   return (
     <Container>
-      <Row>
-        <HeadingText>My Cart {cartItems.length ? `(${cartItems.length})` : ""}</HeadingText>
+      <Row className="d-flex flex-row">
+        <div className="d-flex col-md-12">
+          <HeadingText className="f-grow-2">My Cart {cartItems.length ? `(${cartItems.length})` : ""}</HeadingText>
+          <Button variant="danger" size="sm" onClick={clearAll} className="m-auto">
+            Clear Cart
+          </Button>
+        </div>
       </Row>
       <Row className="main-content">
         <div className="col-md-7">{renderCart()}</div>

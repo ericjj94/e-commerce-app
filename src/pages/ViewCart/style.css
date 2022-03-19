@@ -22,3 +22,10 @@
   gap: 0.5rem;
   margin-top: 2rem;
 }
+
+.quantity-icon {
+  border: 1px solid #dcdcdc;
+  padding: 0.2rem;
+  margin: 0 10px;
+  cursor: pointer;
+}
