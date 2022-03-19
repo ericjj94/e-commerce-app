@@ -2,6 +2,9 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../state";
 import { useNavigate } from "react-router-dom";
 import { ItemsSpan } from "./styled";
+import { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartArrowDown, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 const Header = () => {
   const cartItems = useSelector((state: RootState) => state.cart.items);
@@ -9,8 +12,16 @@ const Header = () => {
   const handleRedirect = () => {
     navigate("/cart");
   };
+  const [animationState, setAnimationState] = useState(false);
+
+  useEffect(() => {
+    setAnimationState(true);
+    setTimeout(() => {
+      setAnimationState(false);
+    }, 1000);
+  }, [cartItems]);
   return (
-    <nav className="navbar navbar-light bg-light">
+    <nav className="navbar navbar-light bg-light navbar-fixed-top">
       <div className="container-fluid">
         <a className="navbar-brand" href="/">
           E-commerce app
@@ -18,12 +29,21 @@ const Header = () => {
         <form className="d-flex">
           <input className="form-control me-2 search-input" type="search" placeholder="Search" aria-label="Search" />
           <button className="btn btn-outline-success" type="submit">
-            Search
+            Search {` `}
+            <FontAwesomeIcon icon={faMagnifyingGlass} />
           </button>
         </form>
         <div className="d-flex">
-          <button className="btn btn-outline-success d-flex" type="submit" onClick={handleRedirect}>
-            <span>View Cart</span>
+          <button
+            className={`btn btn-outline-success d-flex ${animationState ? "cart-updated" : ""}`}
+            type="submit"
+            onClick={handleRedirect}
+          >
+            <span>
+              <FontAwesomeIcon icon={faCartArrowDown} />
+              {` `}
+              View Cart
+            </span>
             {cartItems.length ? <ItemsSpan>{cartItems.length}</ItemsSpan> : null}
           </button>
         </div>

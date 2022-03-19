@@ -13,9 +13,17 @@ const StarRating = ({ rating }: StarRatingInterface) => {
     let starsArr = [];
     for (let i = 0; i < 5; i++) {
       if (i < Math.round(rating)) {
-        starsArr.push(<span className="star">&#9733;</span>);
+        starsArr.push(
+          <span key={i} className="star">
+            &#9733;
+          </span>
+        );
       } else {
-        starsArr.push(<span className="star">&#9734;</span>);
+        starsArr.push(
+          <span key={i} className="star">
+            &#9734;
+          </span>
+        );
       }
     }
     return starsArr;

@@ -1,6 +1,6 @@
 import { createSlice, Dispatch } from "@reduxjs/toolkit";
 import FetchService from "../services/FetchService";
-import { ActionType, ProductObject } from "../state";
+import { ActionType } from "../state";
 
 const initialState = {
   productsList: [],
@@ -42,7 +42,6 @@ export const getProductDetails = (id: number) => {
   return async (dispatch: Dispatch) => {
     try {
       const result = await FetchService(`/product_details?id=${id}`, "GET");
-      console.log("result", result);
       dispatch(setProductDetails(result));
     } catch (e) {
       console.log("Error getting product details", e);

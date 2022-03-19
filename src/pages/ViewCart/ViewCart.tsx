@@ -5,6 +5,8 @@ import { SmallButton, HeadingText } from "../../styled";
 import "./style.css";
 import { useNavigate } from "react-router-dom";
 import { removeItemsFromCart } from "../../reducers/cartReducer";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBasketShopping } from "@fortawesome/free-solid-svg-icons";
 
 // should be added from backend or calculated on product
 let discount = 0;
@@ -54,7 +56,7 @@ const ViewCart = () => {
   };
   const calculatePrice = () => {
     const price = cartItems.reduce((acc, item: ProductObject) => (acc += item.price), 0);
-    return Math.round(price);
+    return Math.floor(price);
   };
   const renderPrice = () => {
     return (
@@ -95,6 +97,7 @@ const ViewCart = () => {
   if (!cartItems?.length) {
     return (
       <Row className="empty-cart">
+        <FontAwesomeIcon icon={faBasketShopping} style={{ fontSize: "100px" }} />
         <span>Your cart is empty!</span>
         <SmallButton onClick={handleRedirect}>Shop now</SmallButton>
       </Row>
