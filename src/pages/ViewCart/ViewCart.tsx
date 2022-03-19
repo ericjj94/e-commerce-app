@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { SmallButton, HeadingText } from "../../styled";
 import "./style.css";
 import { useNavigate } from "react-router-dom";
-import { addItemsToCart, clearCart, removeItemsFromCart } from "../../reducers/cartReducer";
+import { addItemsToCart, clearCart, reduceQuantityForItem, removeItemsFromCart } from "../../reducers/cartReducer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBasketShopping, faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 
@@ -24,6 +24,9 @@ const ViewCart = () => {
   const addSelectedItemToCart = (selectedItem: CartObject) => {
     dispatch(addItemsToCart(selectedItem));
   };
+  const reduceQuantity = (selecteditem: CartObject) => {
+    dispatch(reduceQuantityForItem(selecteditem));
+  };
 
   const renderCartItems = () => {
     return cartItems.map((item: CartObject) => (
@@ -40,7 +43,13 @@ const ViewCart = () => {
             <p>
               <b>
                 No of items:
-                <FontAwesomeIcon icon={faMinus} className="quantity-icon" />
+                <FontAwesomeIcon
+                  icon={faMinus}
+                  className="quantity-icon"
+                  onClick={() => {
+                    reduceQuantity(item);
+                  }}
+                />
                 {item.quantity}
               </b>
               <FontAwesomeIcon
