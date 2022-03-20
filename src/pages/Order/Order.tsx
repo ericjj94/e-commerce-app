@@ -1,11 +1,9 @@
 import React, { useCallback, useMemo, useState } from "react";
-import { Button, Container, Form, Row } from "react-bootstrap";
+import { Container, Form, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import DefaultInput from "../../components/DefaultInput";
-import Input from "../../components/Input";
 import PlacedOrder from "../../components/PlacedOrder";
-import { placeOrder } from "../../reducers/cartReducer";
+import { placeOrder } from "../../reducers/cartReducer/cartReducer";
 import { CartObject, RootState } from "../../state";
 import { SmallButton, PriceText } from "../../styled";
 

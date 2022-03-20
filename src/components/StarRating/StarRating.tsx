@@ -14,13 +14,13 @@ const StarRating = ({ rating }: StarRatingInterface) => {
     for (let i = 0; i < 5; i++) {
       if (i < Math.round(rating)) {
         starsArr.push(
-          <span key={i} className="star">
+          <span key={i} className="star active-star">
             &#9733;
           </span>
         );
       } else {
         starsArr.push(
-          <span key={i} className="star">
+          <span key={i} className="star inactive-star">
             &#9734;
           </span>
         );

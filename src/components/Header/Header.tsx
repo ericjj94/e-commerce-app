@@ -5,7 +5,7 @@ import { ItemsSpan } from "./styled";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBagShopping, faCartArrowDown } from "@fortawesome/free-solid-svg-icons";
-import Input from "../Input";
+import SearchInput from "../SearchInput";
 
 const Header = () => {
   const cartItems = useSelector((state: RootState) => state.cart.items);
@@ -34,7 +34,7 @@ const Header = () => {
           <FontAwesomeIcon icon={faBagShopping} size="2x" />
         </a>
         <form className="d-flex">
-          <Input />
+          <SearchInput />
         </form>
         <div className="d-flex">
           <button
@@ -44,7 +44,7 @@ const Header = () => {
               handleRedirect("/cart");
             }}
           >
-            <span>
+            <span className="view-cart">
               <FontAwesomeIcon icon={faCartArrowDown} />
               {` `}
               View Cart

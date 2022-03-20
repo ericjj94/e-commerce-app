@@ -10,8 +10,8 @@ export type ProductObject = {
   category: string;
   image: string;
   rating: {
-    rate: 3.9;
-    count: 120;
+    rate: number;
+    count: number;
   };
 };
 

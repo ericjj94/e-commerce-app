@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction, Dispatch } from "@reduxjs/toolkit";
-import FetchService from "../services/FetchService";
-import { ProductObject, CartObject } from "../state";
+import FetchService from "../../services/FetchService";
+import { ProductObject, CartObject } from "../../state";
 
 const initialState = {
   items: [],

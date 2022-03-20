@@ -4,7 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { SmallButton, HeadingText } from "../../styled";
 import "./style.css";
 import { useNavigate } from "react-router-dom";
-import { addItemsToCart, clearCart, reduceQuantityForItem, removeItemsFromCart } from "../../reducers/cartReducer";
+import {
+  addItemsToCart,
+  clearCart,
+  reduceQuantityForItem,
+  removeItemsFromCart,
+} from "../../reducers/cartReducer/cartReducer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBasketShopping, faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 

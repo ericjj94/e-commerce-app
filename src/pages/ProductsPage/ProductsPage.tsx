@@ -4,7 +4,7 @@ import { getProducts } from "../../reducers/productsReducer";
 import { ProductObject, RootState } from "../../state";
 import { Card, Row, Col, Container, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { addItemsToCart } from "../../reducers/cartReducer";
+import { addItemsToCart } from "../../reducers/cartReducer/cartReducer";
 import { CardItem } from "./styled";
 
 const ProductsPage = () => {

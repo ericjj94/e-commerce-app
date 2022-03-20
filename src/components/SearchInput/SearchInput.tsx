@@ -5,7 +5,7 @@ import DefaultInput from "../DefaultInput";
 
 let searchTimeout: any = null;
 
-const Input = () => {
+const SearchInput = () => {
   const [searchText, setSearchText] = useState("");
   const dispatch = useDispatch();
   useEffect(() => {
@@ -36,4 +36,4 @@ const Input = () => {
     />
   );
 };
-export default Input;
+export default SearchInput;

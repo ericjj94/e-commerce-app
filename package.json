@@ -14,6 +14,12 @@
   "author": "Eric Jose",
   "license": "ISC",
   "devDependencies": {
+    "@types/enzyme": "^3.10.11",
+    "@types/jest": "^27.4.1",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.6",
+    "enzyme": "^3.11.0",
+    "jest": "^27.5.1",
+    "jest-fetch-mock": "^3.0.3",
     "nodemon": "^2.0.15"
   },
   "browserslist": {
@@ -34,10 +40,6 @@
     "@fortawesome/free-solid-svg-icons": "^6.1.0",
     "@fortawesome/react-fontawesome": "^0.1.18",
     "@reduxjs/toolkit": "^1.8.0",
-    "@testing-library/jest-dom": "^5.16.2",
-    "@testing-library/react": "^12.1.4",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.4.1",
     "@types/node": "^16.11.26",
     "@types/react": "^17.0.40",
     "@types/react-dom": "^17.0.13",

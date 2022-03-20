@@ -5,7 +5,7 @@ import { Container, Row, Card } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import StarRating from "../../components/StarRating";
-import { addItemsToCart } from "../../reducers/cartReducer";
+import { addItemsToCart } from "../../reducers/cartReducer/cartReducer";
 import { getProductDetails } from "../../reducers/productsReducer";
 import { RootState } from "../../state";
 import { PriceText, ProductDescriptionText, SmallButton } from "../../styled";

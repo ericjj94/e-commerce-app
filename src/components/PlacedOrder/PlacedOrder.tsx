@@ -3,7 +3,7 @@ import { CartObject, RootState } from "../../state";
 import { Container, Row, Button, Card } from "react-bootstrap";
 import { SmallButton, PriceText } from "../../styled";
 import { useNavigate } from "react-router-dom";
-import { clearCart, setOrder } from "../../reducers/cartReducer";
+import { clearCart, setOrder } from "../../reducers/cartReducer/cartReducer";
 import { CardItem } from "../../pages/ProductsPage/styled";
 
 const PlacedOrder = () => {
