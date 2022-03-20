@@ -1,5 +1,7 @@
-import { useEffect } from "react";
-import { Container, Row, Button } from "react-bootstrap";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useEffect, useState } from "react";
+import { Container, Row, Card } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import StarRating from "../../components/StarRating";
@@ -11,6 +13,7 @@ import { PriceText, ProductDescriptionText, SmallButton } from "../../styled";
 const ProductDetails = () => {
   const navigate = useNavigate();
   const params = useParams();
+  const [showAddMessage, setShowMessage] = useState(false);
   const dispatch = useDispatch();
   const details = useSelector((state: RootState) => state.products.productDetails);
 
@@ -54,7 +57,11 @@ const ProductDetails = () => {
     );
   };
   const handleAddToCart = () => {
+    setShowMessage(true);
     dispatch(addItemsToCart(details));
+    setTimeout(() => {
+      setShowMessage(false);
+    }, 1000);
   };
   return (
     <Container>
@@ -64,8 +71,11 @@ const ProductDetails = () => {
         </div>
         <div className="col-md-9">{renderDetails()}</div>
       </Row>
-      <Row style={{ display: "flex", gap: "1rem" }} className="mt-5">
-        <SmallButton onClick={handleAddToCart}>Add to Cart</SmallButton>
+      <Row className="mt-5 d-flex flex-row">
+        <SmallButton onClick={handleAddToCart}>
+          Add to Cart &nbsp;
+          {showAddMessage ? <FontAwesomeIcon icon={faCheck} /> : null}
+        </SmallButton>
       </Row>
     </Container>
   );

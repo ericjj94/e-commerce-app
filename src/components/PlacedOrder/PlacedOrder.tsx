@@ -1,14 +1,16 @@
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../state";
-import { Container, Row, Button } from "react-bootstrap";
+import { CartObject, RootState } from "../../state";
+import { Container, Row, Button, Card } from "react-bootstrap";
 import { SmallButton, PriceText } from "../../styled";
 import { useNavigate } from "react-router-dom";
 import { clearCart, setOrder } from "../../reducers/cartReducer";
+import { CardItem } from "../../pages/ProductsPage/styled";
 
 const PlacedOrder = () => {
   const orderPlaced = useSelector((state: RootState) => state.cart.orderPlaced);
   const orderDetails = useSelector((state: RootState) => state.cart.orderDetails);
   const navigate = useNavigate();
+  const cartItems = useSelector((state: RootState) => state.cart.items);
   const dispatch = useDispatch();
 
   if (!orderPlaced) {
@@ -22,10 +24,25 @@ const PlacedOrder = () => {
 
   const renderOrderDetails = () => {
     return (
-      <Row>
-        <p>Email: {orderDetails.email}</p>
-        <p>Order Date: {orderDetails.orderDate}</p>
-      </Row>
+      <>
+        <Row>
+          <p>Email: {orderDetails.email}</p>
+          <p>Order Date: {orderDetails.orderDate}</p>
+        </Row>
+        <Row>
+          <h2>Items ordered</h2>
+          {cartItems.map((item: CartObject, index) => (
+            <Card className="card-item " style={{ width: "18rem" }}>
+              <CardItem>
+                <Card.Body>
+                  <Card.Img variant="top" src={item.image} style={{ height: "200px", width: "200px" }} />
+                  <Card.Title>{item.title}</Card.Title>
+                </Card.Body>
+              </CardItem>
+            </Card>
+          ))}
+        </Row>
+      </>
     );
   };
   return (

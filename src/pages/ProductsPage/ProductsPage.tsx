@@ -67,7 +67,7 @@ const ProductsPage = () => {
                     style={{
                       marginTop: "5px",
                       backgroundColor: isItemInCart ? "#0C6EFD" : "#198754",
-                      marginLeft: "0.5rem",
+                      marginLeft: "0.2rem",
                     }}
                     onClick={(e: React.MouseEvent<HTMLElement>) => {
                       e.stopPropagation();
