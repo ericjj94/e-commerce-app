@@ -14,6 +14,10 @@ code {
   margin-top: 100px;
 }
 
+.error {
+  color: red;
+}
+
 .star {
   font-size: 50px;
   color: #ffcd3c;

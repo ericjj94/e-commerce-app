@@ -24,6 +24,7 @@ const Order = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state: RootState) => state.cart.items);
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setError("");
     setEmail(e.target.value);
   };
 
@@ -106,7 +107,14 @@ const Order = () => {
       <Row>
         <div className="card">
           <div className="card-body">
-            <PriceText>Order summary</PriceText>
+            <PriceText
+              style={{ cursor: "pointer" }}
+              onClick={() => {
+                handleSteps("orderSummary");
+              }}
+            >
+              Order summary
+            </PriceText>
             {step === "orderSummary" ? (
               <>
                 <hr />

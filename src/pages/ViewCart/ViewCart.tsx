@@ -65,7 +65,7 @@ const ViewCart = () => {
               />
             </p>
             <p>
-              <b>Total Price: € {item.price * item.quantity}</b>
+              <b>Total Price: € {Number(item.price * item.quantity).toFixed(2)}</b>
             </p>
 
             <p>
@@ -89,7 +89,7 @@ const ViewCart = () => {
   };
   const calculatePrice = () => {
     const price = cartItems.reduce((acc, item: CartObject) => (acc += item.price * item.quantity), 0);
-    return Math.floor(price);
+    return Number(price.toFixed(2));
   };
   const renderPrice = () => {
     return (
