@@ -83,21 +83,4 @@ export const cartReducer = createSlice({
 export const { addItemsToCart, removeItemsFromCart, clearCart, reduceQuantityForItem, setOrder, orderDetails } =
   cartReducer.actions;
 
-export const placeOrder = (email: string) => {
-  return async (dispatch: Dispatch, getState: Function) => {
-    try {
-      const payload = {
-        email,
-        cartItems: getState().cart.items,
-      };
-      const result = await FetchService(`/place_order`, "POST", payload);
-      if (result?.orderId) {
-        dispatch(setOrder(true));
-        dispatch(orderDetails(result));
-      }
-    } catch (e) {
-      console.log("Error searching for products", e);
-    }
-  };
-};
 export default cartReducer.reducer;

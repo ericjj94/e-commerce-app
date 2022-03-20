@@ -3,7 +3,7 @@ import { Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import DefaultInput from "../../components/DefaultInput";
 import PlacedOrder from "../../components/PlacedOrder";
-import { placeOrder } from "../../reducers/cartReducer/cartReducer";
+import { placeOrder } from "../../actions/cartActions";
 import { CartObject, RootState } from "../../state";
 import { SmallButton, PriceText } from "../../styled";
 
@@ -84,7 +84,11 @@ const Order = () => {
             <div className="col-md-10">
               <PriceText>{item.title}</PriceText>
               <p>{item.description}</p>
-              <PriceText>€ {calculatePrice(item)}</PriceText>
+
+              <PriceText>
+                {" "}
+                € {calculatePrice(item)} for {item.quantity} {item.quantity === 1 ? "item" : "items"}
+              </PriceText>
             </div>
           </Row>
           <hr />
@@ -122,7 +126,9 @@ const Order = () => {
                 <SmallButton
                   backgroundColor="#0d6efd"
                   onClick={() => {
-                    handleSteps("login");
+                    if (cartItems.length) {
+                      handleSteps("login");
+                    }
                   }}
                 >
                   Proceed to order

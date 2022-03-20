@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import StarRating from "../../components/StarRating";
 import { addItemsToCart } from "../../reducers/cartReducer/cartReducer";
-import { getProductDetails } from "../../reducers/productsReducer/productsReducer";
+import { getProductDetails } from "../../actions/productActions";
 import { RootState } from "../../state";
 import { PriceText, ProductDescriptionText, SmallButton } from "../../styled";
 

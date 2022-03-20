@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getProducts, searchProducts } from "../../reducers/productsReducer/productsReducer";
+import { getProducts, searchProducts } from "../../actions/productActions";
 import DefaultInput from "../DefaultInput";
 
 let searchTimeout: any = null;
