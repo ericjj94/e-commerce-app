@@ -112,7 +112,13 @@ const ViewCart = () => {
           </b>
         </Row>
         <Row className="mt-4">
-          <Button>Place order</Button>
+          <Button
+            onClick={() => {
+              navigate("/order");
+            }}
+          >
+            Place order
+          </Button>
         </Row>
       </Row>
     );

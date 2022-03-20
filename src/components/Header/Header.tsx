@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { ItemsSpan } from "./styled";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartArrowDown } from "@fortawesome/free-solid-svg-icons";
+import { faBagShopping, faCartArrowDown } from "@fortawesome/free-solid-svg-icons";
 import Input from "../Input";
 
 const Header = () => {
@@ -31,7 +31,7 @@ const Header = () => {
             handleRedirect("/");
           }}
         >
-          E-commerce app
+          <FontAwesomeIcon icon={faBagShopping} size="2x" />
         </a>
         <form className="d-flex">
           <Input />

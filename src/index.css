@@ -22,6 +22,9 @@ code {
   background-color: #0c6efd !important;
   color: #fff !important;
 }
+.input.form-control {
+  width: 90% !important;
+}
 @media (min-width: 1291px) {
   .search-input {
     width: 800px !important;

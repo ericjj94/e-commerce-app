@@ -2,13 +2,15 @@ import styled from "styled-components";
 
 interface SmallButtonInterface {
   backgroundColor?: string;
+  button?: string;
 }
 
 export const SmallButton = styled.button<SmallButtonInterface>`
   background-color: ${(props) => (props.backgroundColor ? props.backgroundColor : "#198754")};
   color: #fff;
-  max-width: 150px;
+  max-width: ${(props) => (props.button === "medium" ? "300px" : "150px")};
   height: 50px;
+  border-radius: 10px;
 `;
 
 export const HeadingText = styled.div`

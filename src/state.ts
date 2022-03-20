@@ -34,8 +34,17 @@ export interface ProductsInterface {
   productDetails: ProductObject;
 }
 
+export interface OrderObject {
+  orderId: number;
+  cartItems: CartObject[];
+  email: string;
+  orderDate: string;
+}
+
 export interface CartInterface {
   items: [];
+  orderPlaced: boolean;
+  orderDetails: OrderObject;
 }
 
 export interface RootState {

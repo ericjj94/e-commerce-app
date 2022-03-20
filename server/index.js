@@ -31,6 +31,12 @@ app.get("/search_products", (req, res) => {
   res.send(result);
 });
 
+app.post("/place_order", (req, res) => {
+  const body = req.body;
+  const result = productService.placeOrder(body);
+  res.send(result);
+});
+
 app.listen(port, () => {
   console.log(`Server is running on ${port}!`);
 });

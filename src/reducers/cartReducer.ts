@@ -1,9 +1,11 @@
-import { faSortAmountDown } from "@fortawesome/free-solid-svg-icons";
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction, Dispatch } from "@reduxjs/toolkit";
+import FetchService from "../services/FetchService";
 import { ProductObject, CartObject } from "../state";
 
 const initialState = {
   items: [],
+  orderPlaced: false,
+  orderDetails: {},
 };
 
 export const cartReducer = createSlice({
@@ -64,8 +66,38 @@ export const cartReducer = createSlice({
         items: [],
       };
     },
+    setOrder: (state: any, action) => {
+      return {
+        ...state,
+        orderPlaced: action.payload,
+      };
+    },
+    orderDetails: (state: any, action) => {
+      return {
+        ...state,
+        orderDetails: action.payload,
+      };
+    },
   },
 });
-export const { addItemsToCart, removeItemsFromCart, clearCart, reduceQuantityForItem } = cartReducer.actions;
+export const { addItemsToCart, removeItemsFromCart, clearCart, reduceQuantityForItem, setOrder, orderDetails } =
+  cartReducer.actions;
 
+export const placeOrder = (email: string) => {
+  return async (dispatch: Dispatch, getState: Function) => {
+    try {
+      const payload = {
+        email,
+        cartItems: getState().cart.items,
+      };
+      const result = await FetchService(`/place_order`, "POST", payload);
+      if (result?.orderId) {
+        dispatch(setOrder(true));
+        dispatch(orderDetails(result));
+      }
+    } catch (e) {
+      console.log("Error searching for products", e);
+    }
+  };
+};
 export default cartReducer.reducer;
