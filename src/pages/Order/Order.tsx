@@ -2,6 +2,8 @@ import React, { useCallback, useMemo, useState } from "react";
 import { Button, Container, Form, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import DefaultInput from "../../components/DefaultInput";
+import Input from "../../components/Input";
 import PlacedOrder from "../../components/PlacedOrder";
 import { placeOrder } from "../../reducers/cartReducer";
 import { CartObject, RootState } from "../../state";
@@ -47,12 +49,10 @@ const Order = () => {
             <hr />
             <p className="card-text">Enter your email address to place your order</p>
             <div className="d-flex gap-2">
-              <input
+              <DefaultInput
                 className="form-control w-50"
-                type="text"
                 value={email}
-                placeholder="Enter your email here"
-                aria-label="email"
+                placeholder={"Enter your email here"}
                 onChange={handleChange}
               />
               <SmallButton button="medium" onClick={handleSubmit}>

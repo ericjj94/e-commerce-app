@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getProducts, searchProducts } from "../../reducers/productsReducer";
+import DefaultInput from "../DefaultInput";
 
 let searchTimeout: any = null;
 
@@ -26,9 +27,8 @@ const Input = () => {
   };
 
   return (
-    <input
+    <DefaultInput
       className="form-control me-2 search-input"
-      type="search"
       value={searchText}
       placeholder="Search for a product"
       aria-label="Search"
