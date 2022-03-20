@@ -61,6 +61,22 @@ const ProductsPage = () => {
                 >
                   Add to cart
                 </Button>
+                {isItemInCart ? (
+                  <Button
+                    variant="secondary"
+                    style={{
+                      marginTop: "5px",
+                      backgroundColor: isItemInCart ? "#0C6EFD" : "#198754",
+                      marginLeft: "0.5rem",
+                    }}
+                    onClick={(e: React.MouseEvent<HTMLElement>) => {
+                      e.stopPropagation();
+                      navigate("/cart");
+                    }}
+                  >
+                    View Cart
+                  </Button>
+                ) : null}
               </Card.Body>
             </CardItem>
           </Card>

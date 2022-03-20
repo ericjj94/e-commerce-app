@@ -4,14 +4,14 @@ import { useNavigate } from "react-router-dom";
 import { ItemsSpan } from "./styled";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartArrowDown, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { faCartArrowDown } from "@fortawesome/free-solid-svg-icons";
 import Input from "../Input";
 
 const Header = () => {
   const cartItems = useSelector((state: RootState) => state.cart.items);
   const navigate = useNavigate();
-  const handleRedirect = () => {
-    navigate("/cart");
+  const handleRedirect = (route: string) => {
+    navigate(route);
   };
   const [animationState, setAnimationState] = useState(false);
 
@@ -25,7 +25,12 @@ const Header = () => {
   return (
     <nav className="navbar navbar-light bg-light fixed-top">
       <div className="container-fluid">
-        <a className="navbar-brand" href="/">
+        <a
+          className="navbar-brand"
+          onClick={() => {
+            handleRedirect("/");
+          }}
+        >
           E-commerce app
         </a>
         <form className="d-flex">
@@ -35,7 +40,9 @@ const Header = () => {
           <button
             className={`btn btn-outline-success d-flex ${animationState ? "cart-updated" : ""}`}
             type="submit"
-            onClick={handleRedirect}
+            onClick={() => {
+              handleRedirect("/cart");
+            }}
           >
             <span>
               <FontAwesomeIcon icon={faCartArrowDown} />

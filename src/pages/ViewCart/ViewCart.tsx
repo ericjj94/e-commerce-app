@@ -8,13 +8,12 @@ import { addItemsToCart, clearCart, reduceQuantityForItem, removeItemsFromCart }
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBasketShopping, faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 
-// should be added from backend or calculated on product
+// NOTE: Discount should be added from the backend on the product
 let discount = 0;
 
 const ViewCart = () => {
   const navigate = useNavigate();
   const cartItems = useSelector((state: RootState) => state.cart.items);
-  console.log("cartItems in ViewCart", cartItems);
   const dispatch = useDispatch();
 
   const handleRemove = (selectedItem: CartObject) => {
