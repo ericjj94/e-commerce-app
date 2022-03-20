@@ -48,7 +48,7 @@ const PlacedOrder = () => {
   return (
     <Container>
       <Row>
-        <PriceText>{`You're order has been placed with order id: ${orderDetails.orderId}`}</PriceText>
+        <PriceText>{`Congratulations!. You're order has been placed with order id: ${orderDetails.orderId}`}</PriceText>
         {renderOrderDetails()}
         <div className="d-flex flex-column align-items-center mt-4">
           <p>Thank you for shopping</p>

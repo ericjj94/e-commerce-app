@@ -18,9 +18,9 @@ function searchForProducts(searchText) {
 
 function placeOrder(payload) {
   if (payload.email) {
-    // NOTE: should verify the email from the db and then proceed.
+    // the orderId should be a dynamic id (uuid/order-id)
     return {
-      orderId: 1,
+      orderId: 1, // should be dynamic
       cartItems: payload.cartItems,
       email: payload.email,
       orderDate: `${new Date().getDate()}/${new Date().getMonth()}/${new Date().getFullYear()}`,
