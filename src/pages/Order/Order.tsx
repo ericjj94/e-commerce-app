@@ -68,7 +68,7 @@ const Order = () => {
   const calculatePrice = useCallback(
     (item: CartObject) => {
       const price = item.price * item.quantity;
-      return Math.floor(price);
+      return Number(price).toFixed(2);
     },
     [cartItems]
   );
@@ -95,7 +95,7 @@ const Order = () => {
 
   const calculateTotalPrice = useMemo(() => {
     const price = cartItems.reduce((acc, item: CartObject) => (acc += item.price * item.quantity), 0);
-    return Math.floor(price);
+    return Number(price).toFixed(2);
   }, [cartItems]);
 
   const handleSteps = (step: string) => {
