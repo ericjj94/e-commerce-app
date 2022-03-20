@@ -56,9 +56,6 @@ const ProductDetails = () => {
   const handleAddToCart = () => {
     dispatch(addItemsToCart(details));
   };
-  const handlePlaceOrder = () => {
-    navigate("/order");
-  };
   return (
     <Container>
       <Row>
@@ -69,9 +66,6 @@ const ProductDetails = () => {
       </Row>
       <Row style={{ display: "flex", gap: "1rem" }} className="mt-5">
         <SmallButton onClick={handleAddToCart}>Add to Cart</SmallButton>
-        <SmallButton backgroundColor={"#0d6efd"} onClick={handlePlaceOrder}>
-          Place Order
-        </SmallButton>
       </Row>
     </Container>
   );

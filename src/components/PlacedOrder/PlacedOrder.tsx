@@ -3,7 +3,7 @@ import { RootState } from "../../state";
 import { Container, Row, Button } from "react-bootstrap";
 import { SmallButton, PriceText } from "../../styled";
 import { useNavigate } from "react-router-dom";
-import { clearCart } from "../../reducers/cartReducer";
+import { clearCart, setOrder } from "../../reducers/cartReducer";
 
 const PlacedOrder = () => {
   const orderPlaced = useSelector((state: RootState) => state.cart.orderPlaced);
@@ -16,6 +16,7 @@ const PlacedOrder = () => {
   }
   const handleRedirect = () => {
     dispatch(clearCart());
+    dispatch(setOrder(false));
     navigate("/");
   };
 
