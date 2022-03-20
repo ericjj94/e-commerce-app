@@ -14,7 +14,11 @@ export function mount(component: React.ReactElement) {
   };
 }
 
-export function mountWithRoute(component: React.ReactElement, mock: any, { initialRoute = "/", currentPath = "/" }) {
+export function mountWithRoute(
+  component: React.ReactElement,
+  reduxStore: any,
+  { initialRoute = "/", currentPath = "/" }
+) {
   const store = configureStore({ reducer: rootReducers, devTools: true });
   return {
     component: enzymeMount(

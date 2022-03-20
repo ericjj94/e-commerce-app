@@ -5,15 +5,8 @@ import DefaultInput from "../../components/DefaultInput";
 import PlacedOrder from "../../components/PlacedOrder";
 import { placeOrder } from "../../actions/cartActions";
 import { CartObject, RootState } from "../../state";
-import { SmallButton, PriceText } from "../../styled";
-
-const validateEmail = (email: string) => {
-  return String(email)
-    .toLowerCase()
-    .match(
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    );
-};
+import { SmallButton, PriceText, SmallImage } from "../../styled";
+import { validateEmail } from "../../utils/validateEmail";
 
 const Order = () => {
   const [email, setEmail] = useState("");
@@ -35,7 +28,6 @@ const Order = () => {
       setError("Please enter a correct email");
     } else {
       dispatch(placeOrder(email));
-      console.log("calling API for login");
     }
   };
 
@@ -79,7 +71,7 @@ const Order = () => {
         <div key={index}>
           <Row>
             <div className="col-md-2">
-              <img src={item.image} style={{ height: "100px", width: "100px" }} />
+              <SmallImage src={item.image} />
             </div>
             <div className="col-md-10">
               <PriceText>{item.title}</PriceText>

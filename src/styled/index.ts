@@ -31,3 +31,8 @@ export const ProductDescriptionText = styled.div`
   font-weight: 500;
   line-height: 1;
 `;
+
+export const SmallImage = styled.img`
+  height: 150px;
+  width: 150px;
+`;
