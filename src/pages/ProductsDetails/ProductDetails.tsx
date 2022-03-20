@@ -1,17 +1,16 @@
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
-import { Container, Row, Card } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import StarRating from "../../components/StarRating";
 import { addItemsToCart } from "../../reducers/cartReducer/cartReducer";
-import { getProductDetails } from "../../reducers/productsReducer";
+import { getProductDetails } from "../../reducers/productsReducer/productsReducer";
 import { RootState } from "../../state";
 import { PriceText, ProductDescriptionText, SmallButton } from "../../styled";
 
 const ProductDetails = () => {
-  const navigate = useNavigate();
   const params = useParams();
   const [showAddMessage, setShowMessage] = useState(false);
   const dispatch = useDispatch();
@@ -67,7 +66,7 @@ const ProductDetails = () => {
     <Container>
       <Row>
         <div className="col-md-3">
-          <img src={details.image} height={"100%"} width={"100%"} />
+          <img src={details.image} height={"100%"} width={"100%"} className="product-image" />
         </div>
         <div className="col-md-9">{renderDetails()}</div>
       </Row>

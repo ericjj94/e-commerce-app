@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo, useState } from "react";
-import { Container, Form, Row } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import DefaultInput from "../../components/DefaultInput";
 import PlacedOrder from "../../components/PlacedOrder";

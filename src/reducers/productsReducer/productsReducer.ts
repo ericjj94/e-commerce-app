@@ -1,6 +1,6 @@
 import { createSlice, Dispatch } from "@reduxjs/toolkit";
-import FetchService from "../services/FetchService";
-import { ActionType } from "../state";
+import FetchService from "../../services/FetchService";
+import { ActionType } from "../../state";
 
 const initialState = {
   productsList: [],
